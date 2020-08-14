@@ -31,10 +31,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
@@ -42,10 +47,6 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -231,6 +232,8 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
     public void onBackPressed() {
         if (mDrawer != null && mDrawer.isDrawerOpen()) {
             mDrawer.closeDrawer();
+        } else if (!(mCurrentFragment instanceof TransactionMultiPanelViewPagerFragment)) {
+            loadSection(ID_SECTION_TRANSACTIONS);
         } else if (mCurrentFragment instanceof NavigableFragment) {
             if (!((NavigableFragment) mCurrentFragment).navigateBack()) {
                 super.onBackPressed();
