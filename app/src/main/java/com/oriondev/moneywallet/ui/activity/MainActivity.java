@@ -234,6 +234,8 @@ public class MainActivity extends BaseActivity implements DrawerController, Acco
             mDrawer.closeDrawer();
         } else if (!(mCurrentFragment instanceof TransactionMultiPanelViewPagerFragment)) {
             loadSection(ID_SECTION_TRANSACTIONS);
+            mCurrentSelection = ID_SECTION_TRANSACTIONS;
+            mDrawer.setSelection(mCurrentSelection, false);
         } else if (mCurrentFragment instanceof NavigableFragment) {
             if (!((NavigableFragment) mCurrentFragment).navigateBack()) {
                 super.onBackPressed();
