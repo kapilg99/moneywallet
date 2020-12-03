@@ -19,11 +19,13 @@
 
 package com.oriondev.moneywallet.ui.adapter.pager;
 
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -33,6 +35,8 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.model.CurrencyUnit;
@@ -51,7 +55,7 @@ public class BarChartViewPagerAdapter  extends PagerAdapter {
     }
 
     @NonNull
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull final ViewGroup container, int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.adapter_bar_chart_item, container, false);
         BarChart barChart = view.findViewById(R.id.bar_chart_view);
         barChart.getDescription().setEnabled(false);
@@ -86,6 +90,20 @@ public class BarChartViewPagerAdapter  extends PagerAdapter {
             barData.setValueTextColor(xAxis.getTextColor());
             barData.setValueFormatter(new IMoneyFormatter(currencyUnit));
             barChart.groupBars(0, 0.08f, 0.06f);
+            barChart.setDragEnabled(false);
+            barChart.setScaleEnabled(false);
+            barData.setHighlightEnabled(true);
+            barChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+                @Override
+                public void onValueSelected(Entry e, Highlight h) {
+                    Toast.makeText(container.getContext(), Float.toString(e.getY() / 100), Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onNothingSelected() {
+
+                }
+            });
         } else {
             barChart.setData(null);
         }
