@@ -27,12 +27,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import android.text.TextUtils;
 
 import com.oriondev.moneywallet.R;
 import com.oriondev.moneywallet.api.BackendException;
@@ -93,7 +94,7 @@ public class BackupHandlerIntentService extends IntentService {
     private static final String ATTACHMENT_FOLDER = "attachments";
     private static final String BACKUP_CACHE_FOLDER = "backups";
     private static final String TEMP_FOLDER = "temp";
-    private static final String FILE_DATETIME_PATTERN = "yyyy-MM-dd_HH:mm:ss";
+    private static final String FILE_DATETIME_PATTERN = "yyyy-MM-dd_HH-mm-ss";
     private static final String OUTPUT_FILE = "backup_%s%s";
 
     private static final int ACTION_NONE = 0;

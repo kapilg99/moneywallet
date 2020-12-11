@@ -29,6 +29,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -190,6 +191,7 @@ public class DataContentProvider extends ContentProvider {
                 cursor.setNotificationUri(getContentResolver(), CONTENT_WALLETS);
                 cursor.setNotificationUri(getContentResolver(), CONTENT_TRANSACTIONS);
                 cursor.setNotificationUri(getContentResolver(), CONTENT_TRANSFERS);
+                cursor.setNotificationUri(getContentResolver(), CONTENT_DEBTS);
                 break;
             case WALLET_ITEM:
                 cursor = new MultiUriCursorWrapper(mDatabase.getWallet(ContentUris.parseId(uri), projection));
