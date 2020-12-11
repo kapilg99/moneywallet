@@ -2,6 +2,7 @@ package com.oriondev.moneywallet.storage.database.data;
 
 import android.content.Context;
 import android.database.Cursor;
+
 import androidx.collection.LongSparseArray;
 
 import com.oriondev.moneywallet.model.Wallet;
@@ -32,7 +33,7 @@ public abstract class AbstractDataExporter {
     }
 
     protected String getDefaultFileName(String extension) {
-        String dateTimeString = DateUtils.getSQLDateTimeString(new Date());
+        String dateTimeString = DateUtils.getFilenameDateTimeString(new Date());
         return "MoneyWallet_export_" + dateTimeString + extension;
     }
 
