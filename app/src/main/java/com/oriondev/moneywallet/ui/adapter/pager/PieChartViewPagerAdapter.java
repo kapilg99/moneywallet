@@ -44,13 +44,13 @@ public class PieChartViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.adapter_pie_chart_item, container, false);
         PieChart pieChart = view.findViewById(R.id.pie_chart_view);
-        /*
         pieChart.setUsePercentValues(true);
+        /*
+        pieChart.setTouchEnabled(false);
         pieChart.getDescription().setEnabled(false);
         pieChart.getLegend().setEnabled(false);
         pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setExtraOffsets(5, 10, 5, 5);
-        pieChart.setTouchEnabled(false);
         if (mData != null && mData.getChartCount() > 0) {
             pieChart.setData(mData.getChartData(position));
         } else {
