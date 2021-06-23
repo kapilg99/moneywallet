@@ -90,8 +90,8 @@ public class BarChartViewPagerAdapter  extends PagerAdapter {
             barData.setValueTextColor(xAxis.getTextColor());
             barData.setValueFormatter(new IMoneyFormatter(currencyUnit));
             barChart.groupBars(0, 0.08f, 0.06f);
-            barChart.setDragEnabled(false);
-            barChart.setScaleEnabled(false);
+            barChart.setDragEnabled(true);
+            barChart.setScaleEnabled(true);
             barData.setHighlightEnabled(true);
             barChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
                 @Override

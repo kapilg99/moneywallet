@@ -85,8 +85,8 @@ public class OverviewChartViewPagerAdapter extends PagerAdapter {
                 barChart.setDrawBarShadow(false);
                 barChart.setDrawGridBackground(false);
                 barChart.setDrawMarkers(true);
-                barChart.setDragEnabled(false);
-                barChart.setScaleEnabled(false);
+                barChart.setDragEnabled(true);
+                barChart.setScaleEnabled(true);
                 if (mOverviewData != null) {
                     BarData barData = mOverviewData.getBarData();
                     barChart.setData(barData);
@@ -132,8 +132,8 @@ public class OverviewChartViewPagerAdapter extends PagerAdapter {
                 view = inflater.inflate(R.layout.adapter_line_chart_item, container, false);
                 LineChart lineChart = view.findViewById(R.id.line_chart_view);
                 lineChart.getDescription().setEnabled(false);
-                lineChart.setDragEnabled(false);
-                lineChart.setScaleEnabled(false);
+                lineChart.setDragEnabled(true);
+                lineChart.setScaleEnabled(true);
                 lineChart.setHighlightPerDragEnabled(true);
                 lineChart.setHighlightPerTapEnabled(true);
                 lineChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
