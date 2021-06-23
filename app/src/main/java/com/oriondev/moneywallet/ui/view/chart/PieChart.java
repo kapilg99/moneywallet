@@ -356,4 +356,8 @@ public class PieChart extends View {
             c.drawCircle(centerX, centerY, chartRadius * 0.50f, mSlicePaint);
         }
     }
+
+    public void setUsePercentValues(boolean setPercentEnabled) {
+        mPercentageEnabled = setPercentEnabled;
+    }
 }
